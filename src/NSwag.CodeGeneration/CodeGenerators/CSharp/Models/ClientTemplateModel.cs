@@ -72,7 +72,7 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp.Models
         /// <summary>Gets the operations.</summary>
         public IList<OperationModel> Operations { get; }
 
-        /// <summary>Gets the JSON converters code.</summary>
-        public string JsonConverters => CSharpJsonConverters.GenerateConverters(_settings.CSharpGeneratorSettings);
+        //// <summary>Gets the JSON converters code.</summary>
+        //public string JsonConverters => CSharpJsonConverters.GenerateConverters(_settings.CSharpGeneratorSettings);
     }
 }
