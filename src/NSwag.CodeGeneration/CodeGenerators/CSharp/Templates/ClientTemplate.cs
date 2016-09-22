@@ -17,7 +17,7 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+    #line 1 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
     internal partial class ClientTemplate : ClientTemplateBase
     {
@@ -29,95 +29,95 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp.Templates
         {
             this.Write("\r\n");
             
-            #line 6 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 6 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.HasOperations){
             
             #line default
             #line hidden
             
-            #line 7 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 7 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.GenerateContracts && Model.GenerateClientInterfaces){
             
             #line default
             #line hidden
             this.Write("[GeneratedCode(\"NSwag\", \"");
             
-            #line 8 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 8 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SwaggerService.ToolchainVersion));
             
             #line default
             #line hidden
             this.Write("\")]\r\npublic partial interface I");
             
-            #line 9 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 9 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 11 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 11 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var operation in Model.Operations){
             
             #line default
             #line hidden
             
-            #line 12 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 12 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasSummary){
             
             #line default
             #line hidden
             this.Write("    /// <summary>");
             
-            #line 12 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 12 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.Summary, 1)));
             
             #line default
             #line hidden
             this.Write("</summary>\r\n");
             
-            #line 13 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 13 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }foreach (var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 14 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 14 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(parameter.HasDescription){
             
             #line default
             #line hidden
             this.Write("    /// <param name=\"");
             
-            #line 14 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 14 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 14 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 14 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(parameter.Description, 1)));
             
             #line default
             #line hidden
             this.Write("</param>\r\n");
             
-            #line 15 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 15 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }}if(operation.HasResultDescription){
             
             #line default
             #line hidden
             this.Write("    /// <returns>");
             
-            #line 15 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 15 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)));
             
             #line default
             #line hidden
             this.Write("</returns>\r\n");
             
-            #line 16 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 16 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
@@ -125,109 +125,109 @@ foreach(var operation in Model.Operations){
             this.Write("    /// <exception cref=\"SwaggerException\">A server side error occurred.</excepti" +
                     "on>\r\n");
             
-            #line 17 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 17 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.IsDeprecated){
             
             #line default
             #line hidden
             this.Write("    [Obsolete]\r\n");
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("    ");
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ResultType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.OperationNameUpper));
             
             #line default
             #line hidden
             this.Write("Async(");
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(!parameter.IsLast){
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 18 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 18 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }}
             
             #line default
             #line hidden
             this.Write(");\r\n\r\n");
             
-            #line 20 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 20 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasSummary){
             
             #line default
             #line hidden
             this.Write("    /// <summary>");
             
-            #line 20 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 20 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.Summary, 1)));
             
             #line default
             #line hidden
             this.Write("</summary>\r\n");
             
-            #line 21 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 21 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }foreach (var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 22 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 22 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(parameter.HasDescription){
             
             #line default
             #line hidden
             this.Write("    /// <param name=\"");
             
-            #line 22 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 22 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 22 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 22 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(parameter.Description, 1)));
             
             #line default
             #line hidden
             this.Write("</param>\r\n");
             
-            #line 23 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 23 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }}
             
             #line default
@@ -235,21 +235,21 @@ if(!parameter.IsLast){
             this.Write("    /// <param name=\"cancellationToken\">A cancellation token that can be used by " +
                     "other objects or threads to receive notice of cancellation.</param>\r\n");
             
-            #line 24 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 24 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasResultDescription){
             
             #line default
             #line hidden
             this.Write("    /// <returns>");
             
-            #line 24 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 24 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)));
             
             #line default
             #line hidden
             this.Write("</returns>\r\n");
             
-            #line 25 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 25 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
@@ -257,196 +257,196 @@ if(!parameter.IsLast){
             this.Write("    /// <exception cref=\"SwaggerException\">A server side error occurred.</excepti" +
                     "on>\r\n");
             
-            #line 26 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 26 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.IsDeprecated){
             
             #line default
             #line hidden
             this.Write("    [Obsolete]\r\n");
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("    ");
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ResultType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.OperationNameUpper));
             
             #line default
             #line hidden
             this.Write("Async(");
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 27 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 27 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("CancellationToken cancellationToken);\r\n\r\n");
             
-            #line 29 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 29 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("}\r\n");
             
-            #line 31 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 31 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 33 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 33 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.GenerateImplementation){
             
             #line default
             #line hidden
             this.Write("[GeneratedCode(\"NSwag\", \"");
             
-            #line 34 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 34 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(SwaggerService.ToolchainVersion));
             
             #line default
             #line hidden
             this.Write("\")]\r\npublic partial class ");
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.HasBaseType){
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.HasBaseClass){
             
             #line default
             #line hidden
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.BaseClass));
             
             #line default
             #line hidden
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.GenerateClientInterfaces){
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.GenerateClientInterfaces){
             
             #line default
             #line hidden
             this.Write("I");
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             
-            #line 35 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 35 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 38 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 38 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(Model.HasConfigurationClass){
             
             #line default
             #line hidden
             this.Write("    public ");
             
-            #line 39 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 39 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write("() : this(\"");
             
-            #line 39 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 39 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.BaseUrl));
             
             #line default
             #line hidden
             this.Write("\", null) { }\r\n\r\n    public ");
             
-            #line 41 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 41 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write("(string baseUrl) : this(baseUrl, null) { }\r\n\r\n    public ");
             
-            #line 43 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 43 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write("(string baseUrl, ");
             
-            #line 43 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 43 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.ConfigurationClass));
             
             #line default
@@ -454,35 +454,35 @@ if(Model.HasConfigurationClass){
             this.Write(" configuration) : base(configuration)\r\n    {\r\n        BaseUrl = baseUrl; \r\n    }\r" +
                     "\n");
             
-            #line 47 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 47 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }else{
             
             #line default
             #line hidden
             this.Write("    public ");
             
-            #line 48 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 48 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write("() : this(\"");
             
-            #line 48 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 48 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.BaseUrl));
             
             #line default
             #line hidden
             this.Write("\") { }\r\n\r\n    public ");
             
-            #line 50 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 50 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Class));
             
             #line default
             #line hidden
             this.Write("(string baseUrl)\r\n    {\r\n        BaseUrl = baseUrl; \r\n    }\r\n");
             
-            #line 54 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 54 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
@@ -491,68 +491,68 @@ if(Model.HasConfigurationClass){
                     "tial void ProcessResponse(HttpClient request, HttpResponseMessage response);\r\n\r\n" +
                     "    public string BaseUrl { get; set; }\r\n\r\n");
             
-            #line 62 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 62 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var operation in Model.Operations){
             
             #line default
             #line hidden
             
-            #line 63 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 63 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasSummary){
             
             #line default
             #line hidden
             this.Write("    /// <summary>");
             
-            #line 63 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 63 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.Summary, 1)));
             
             #line default
             #line hidden
             this.Write("</summary>\r\n");
             
-            #line 64 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 64 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }foreach (var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 65 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 65 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(parameter.HasDescription){
             
             #line default
             #line hidden
             this.Write("    /// <param name=\"");
             
-            #line 65 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 65 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 65 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 65 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(parameter.Description, 1)));
             
             #line default
             #line hidden
             this.Write("</param>\r\n");
             
-            #line 66 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 66 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }}if(operation.HasResultDescription){
             
             #line default
             #line hidden
             this.Write("    /// <returns>");
             
-            #line 66 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 66 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)));
             
             #line default
             #line hidden
             this.Write("</returns>\r\n");
             
-            #line 67 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 67 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
@@ -560,155 +560,155 @@ foreach(var operation in Model.Operations){
             this.Write("    /// <exception cref=\"SwaggerException\">A server side error occurred.</excepti" +
                     "on>\r\n");
             
-            #line 68 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 68 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.IsDeprecated){
             
             #line default
             #line hidden
             this.Write("    [Obsolete]\r\n");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("    public ");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ResultType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.OperationNameUpper));
             
             #line default
             #line hidden
             this.Write("Async(");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(parameter.VariableNameLower != "id"){
             
             #line default
             #line hidden
             this.Write(" = null");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(!parameter.IsLast){
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 69 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }}
             
             #line default
             #line hidden
             this.Write(")\r\n    {\r\n        return ");
             
-            #line 71 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 71 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.OperationNameUpper));
             
             #line default
             #line hidden
             this.Write("Async(CancellationToken.None, ");
             
-            #line 71 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 71 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 71 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 71 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             
-            #line 71 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 71 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(!parameter.IsLast){
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 71 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 71 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }}
             
             #line default
             #line hidden
             this.Write(");\r\n    }\r\n\r\n");
             
-            #line 74 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 74 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasSummary){
             
             #line default
             #line hidden
             this.Write("    /// <summary>");
             
-            #line 74 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 74 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.Summary, 1)));
             
             #line default
             #line hidden
             this.Write("</summary>\r\n");
             
-            #line 75 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 75 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }foreach (var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 76 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 76 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(parameter.HasDescription){
             
             #line default
             #line hidden
             this.Write("    /// <param name=\"");
             
-            #line 76 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 76 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\">");
             
-            #line 76 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 76 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(parameter.Description, 1)));
             
             #line default
             #line hidden
             this.Write("</param>\r\n");
             
-            #line 77 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 77 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }}
             
             #line default
@@ -716,21 +716,21 @@ if(!parameter.IsLast){
             this.Write("    /// <param name=\"cancellationToken\">A cancellation token that can be used by " +
                     "other objects or threads to receive notice of cancellation.</param>\r\n");
             
-            #line 78 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 78 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasResultDescription){
             
             #line default
             #line hidden
             this.Write("    /// <returns>");
             
-            #line 78 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 78 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)));
             
             #line default
             #line hidden
             this.Write("</returns>\r\n");
             
-            #line 79 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 79 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
@@ -738,281 +738,281 @@ if(!parameter.IsLast){
             this.Write("    /// <exception cref=\"SwaggerException\">A server side error occurred.</excepti" +
                     "on>\r\n");
             
-            #line 80 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 80 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.IsDeprecated){
             
             #line default
             #line hidden
             this.Write("    [Obsolete]\r\n");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("    public async ");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ResultType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.OperationNameUpper));
             
             #line default
             #line hidden
             this.Write("Async(CancellationToken cancellationToken, ");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.Parameters){
             
             #line default
             #line hidden
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Type));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(parameter.VariableNameLower != "id"){
             
             #line default
             #line hidden
             this.Write(" = null");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(!parameter.IsLast){
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 81 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }}
             
             #line default
             #line hidden
             this.Write(")\r\n    {\r\n        var url_ = string.Format(\"{0}/{1}");
             
-            #line 83 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 83 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(operation.QueryParameters.Any()){
             
             #line default
             #line hidden
             this.Write("?");
             
-            #line 83 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 83 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("\", BaseUrl, \"");
             
-            #line 83 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 83 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Path));
             
             #line default
             #line hidden
             this.Write("\");\r\n");
             
-            #line 84 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 84 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.PathParameters){
             
             #line default
             #line hidden
             this.Write("\r\n        if (");
             
-            #line 86 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 86 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(" == null)\r\n            throw new ArgumentNullException(\"");
             
-            #line 87 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 87 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\");\r\n");
             
-            #line 88 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 88 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(parameter.IsDateArray){
             
             #line default
             #line hidden
             this.Write("        url_ = url_.Replace(\"{");
             
-            #line 89 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 89 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("}\", Uri.EscapeDataString(string.Join(\",\", ");
             
-            #line 89 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 89 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".Select(s_ => s_.ToString(\"s\", CultureInfo.InvariantCulture)))));\r\n");
             
-            #line 90 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 90 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else if(parameter.IsDate){
             
             #line default
             #line hidden
             this.Write("        url_ = url_.Replace(\"{");
             
-            #line 91 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 91 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("}\", Uri.EscapeDataString(");
             
-            #line 91 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 91 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".ToString(\"s\", CultureInfo.InvariantCulture)));\r\n");
             
-            #line 92 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 92 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else if(parameter.IsArray){
             
             #line default
             #line hidden
             this.Write("        url_ = url_.Replace(\"{");
             
-            #line 93 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 93 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("}\", Uri.EscapeDataString(string.Join(\",\", ");
             
-            #line 93 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 93 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".Select(s_ => s_.ToString()))));\r\n");
             
-            #line 94 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 94 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             this.Write("        url_ = url_.Replace(\"{");
             
-            #line 95 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 95 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("}\", Uri.EscapeDataString(");
             
-            #line 95 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 95 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".ToString()));\r\n");
             
-            #line 96 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 96 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 97 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 97 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 98 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 98 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.QueryParameters){
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 100 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 100 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(!parameter.IsNullable){
             
             #line default
             #line hidden
             this.Write("        if (");
             
-            #line 101 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 101 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(" == null)\r\n            throw new ArgumentNullException(\"");
             
-            #line 102 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 102 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\");\r\n        else\r\n");
             
-            #line 104 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 104 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             this.Write("        if (");
             
-            #line 105 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 105 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(" != null)\r\n");
             
-            #line 106 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 106 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 107 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 107 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(parameter.IsDateArray){
             
             #line default
             #line hidden
             this.Write("            foreach(var item_ in ");
             
-            #line 108 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 108 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(") { url_ += string.Format(\"");
             
-            #line 108 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 108 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
@@ -1020,109 +1020,109 @@ foreach(var parameter in operation.QueryParameters){
             this.Write("={0}&\", Uri.EscapeDataString(item_.ToString(\"s\", CultureInfo.InvariantCulture)));" +
                     " }\r\n");
             
-            #line 109 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 109 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else if(parameter.IsDate){
             
             #line default
             #line hidden
             this.Write("            url_ += string.Format(\"");
             
-            #line 110 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 110 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("={0}&\", Uri.EscapeDataString(");
             
-            #line 110 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 110 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             
-            #line 110 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 110 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(parameter.Type.EndsWith("?")){
             
             #line default
             #line hidden
             this.Write(".Value");
             
-            #line 110 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 110 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(".ToString(\"s\", CultureInfo.InvariantCulture)));\r\n");
             
-            #line 111 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 111 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else if(parameter.IsArray){
             
             #line default
             #line hidden
             this.Write("            foreach(var item_ in ");
             
-            #line 112 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 112 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(") { url_ += string.Format(\"");
             
-            #line 112 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 112 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("={0}&\", Uri.EscapeDataString(item_.ToString())); }\r\n");
             
-            #line 113 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 113 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             this.Write("            url_ += string.Format(\"");
             
-            #line 114 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 114 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("={0}&\", Uri.EscapeDataString(");
             
-            #line 114 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 114 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             
-            #line 114 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 114 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(parameter.Type.EndsWith("?")){
             
             #line default
             #line hidden
             this.Write(".Value");
             
-            #line 114 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 114 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write(".ToString()));\r\n");
             
-            #line 115 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 115 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 116 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 116 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 118 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 118 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(Model.UseHttpClientCreationMethod){
             
             #line default
@@ -1130,64 +1130,65 @@ if(parameter.Type.EndsWith("?")){
             this.Write("        var client_ = await CreateHttpClientAsync(cancellationToken).ConfigureAwa" +
                     "it(false);\r\n");
             
-            #line 120 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 120 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
             #line hidden
             this.Write("        var client_ = new HttpClient();\r\n");
             
-            #line 122 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 122 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write("        PrepareRequest(client_, ref url_);\r\n");
             
-            #line 124 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 124 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.HeaderParameters){
             
             #line default
             #line hidden
             this.Write("        client_.DefaultRequestHeaders.TryAddWithoutValidation(\"");
             
-            #line 125 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 125 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("\", ");
             
-            #line 125 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 125 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 126 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 126 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 128 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 128 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(operation.HasContent){
             
             #line default
             #line hidden
-            this.Write("        var content_ = new StringContent(JsonConvert.SerializeObject(");
+            this.Write("        var stringContent = JsonConvert.SerializeObject(");
             
-            #line 129 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 129 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ContentParameter.VariableNameLower));
             
             #line default
             #line hidden
-            this.Write("));\r\n        content_.Headers.ContentType.MediaType = \"application/json\";\r\n\r\n    " +
-                    "    var response_ = await client_.");
+            this.Write(");\r\n        var content_ = new StringContent(stringContent);\r\n        content_.He" +
+                    "aders.ContentType.MediaType = \"application/json\";\r\n\r\n        var response_ = awa" +
+                    "it client_.");
             
-            #line 132 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 133 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.HttpMethodUpper));
             
             #line default
@@ -1195,87 +1196,87 @@ if(operation.HasContent){
             this.Write("Async(url_, content_, cancellationToken).ConfigureAwait(false);\r\n        ProcessR" +
                     "esponse(client_, response_);\r\n");
             
-            #line 134 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 135 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }else{
             
             #line default
             #line hidden
             
-            #line 135 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 136 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.IsGetOrDelete){
             
             #line default
             #line hidden
             this.Write("        var response_ = await client_.");
             
-            #line 136 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 137 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.HttpMethodUpper));
             
             #line default
             #line hidden
             this.Write("Async(url_, cancellationToken).ConfigureAwait(false);\r\n");
             
-            #line 137 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 138 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             
-            #line 138 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 139 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasFormParameters){
             
             #line default
             #line hidden
             this.Write("        var content_ = new MultipartFormDataContent();\r\n");
             
-            #line 140 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 141 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var parameter in operation.FormParameters){
             
             #line default
             #line hidden
             
-            #line 141 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 142 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(parameter.IsNullable){
             
             #line default
             #line hidden
             this.Write("        if (");
             
-            #line 142 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 143 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(" != null)\r\n");
             
-            #line 143 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 144 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             this.Write("        if (");
             
-            #line 144 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 145 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(" == null)\r\n            throw new ArgumentNullException(\"");
             
-            #line 145 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 146 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write("\");\r\n        else\r\n");
             
-            #line 147 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 148 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 148 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 149 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(parameter.IsFile){
         if(parameter.IsArray){
             
@@ -1283,63 +1284,63 @@ foreach(var parameter in operation.FormParameters){
             #line hidden
             this.Write("            foreach(var item_ in ");
             
-            #line 150 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 151 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(") { content_.Add(new StreamContent(item_.Data), \"");
             
-            #line 150 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 151 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("\", item_.FileName ?? \"");
             
-            #line 150 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 151 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("\"); }\r\n");
             
-            #line 151 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 152 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
             #line hidden
             this.Write("            content_.Add(new StreamContent(");
             
-            #line 152 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 153 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".Data), \"");
             
-            #line 152 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 153 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("\", ");
             
-            #line 152 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 153 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".FileName ?? \"");
             
-            #line 152 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 153 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n");
             
-            #line 153 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 154 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }
     }else{
             
@@ -1347,103 +1348,110 @@ foreach(var parameter in operation.FormParameters){
             #line hidden
             this.Write("            content_.Add(new StringContent(");
             
-            #line 155 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 156 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.VariableNameLower));
             
             #line default
             #line hidden
             this.Write(".ToString()), \"");
             
-            #line 155 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 156 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(parameter.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n");
             
-            #line 156 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 157 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 157 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 158 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 158 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 159 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             this.Write("        var content_ = new StringContent(string.Empty);\r\n");
             
-            #line 160 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 161 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("        \r\n        var response_ = await client_.");
             
-            #line 162 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 163 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.HttpMethodUpper));
             
             #line default
             #line hidden
             this.Write("Async(url_, content_, cancellationToken).ConfigureAwait(false);\r\n");
             
-            #line 163 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 164 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("        ProcessResponse(client_, response_);\r\n");
             
-            #line 165 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 166 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
-            this.Write("\r\n        var responseData_ = await response_.Content.ReadAsByteArrayAsync().Conf" +
-                    "igureAwait(false); \r\n        var status_ = ((int)response_.StatusCode).ToString(" +
-                    ");\r\n\r\n");
+            this.Write(@"
+        var responseData_ = await response_.Content.ReadAsByteArrayAsync().ConfigureAwait(false); 
+        var status_ = ((int)response_.StatusCode).ToString();
+        var value = string.Empty;
+        if (responseData_.Length > 0)
+        {
+            value = Encoding.UTF8.GetString(responseData_, 0, responseData_.Length);
+        }
+
+");
             
-            #line 170 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 176 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 foreach(var response in operation.Responses){
             
             #line default
             #line hidden
             this.Write("        if (status_ == \"");
             
-            #line 171 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 177 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.StatusCode));
             
             #line default
             #line hidden
             this.Write("\") \r\n        {\r\n");
             
-            #line 173 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 179 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(response.HasType){
             
             #line default
             #line hidden
             
-            #line 174 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 180 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(response.IsFile){
             
             #line default
             #line hidden
             
-            #line 175 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 181 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(response.IsSuccess){
             
             #line default
             #line hidden
             this.Write("            return responseData_; \r\n");
             
-            #line 177 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 183 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
@@ -1451,56 +1459,55 @@ if(response.HasType){
             this.Write("            throw new SwaggerException<byte[]>(\"A server side error occurred.\", s" +
                     "tatus_, responseData_, responseData_, null);\r\n");
             
-            #line 179 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 185 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }
             
             #line default
             #line hidden
             
-            #line 180 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 186 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
             #line hidden
             
-            #line 181 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 187 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(response.Type.Contains("ObservableCollection")){
             
             #line default
             #line hidden
             this.Write("            var result_ = default(ODataResponseOfListOf");
             
-            #line 182 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 188 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.Type.Replace("ObservableCollection<","").Replace(">","")));
             
             #line default
             #line hidden
             this.Write("); \r\n");
             
-            #line 183 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 189 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
             #line hidden
             this.Write("            var result_ = default(");
             
-            #line 184 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 190 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.Type));
             
             #line default
             #line hidden
             this.Write("); \r\n");
             
-            #line 185 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 191 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
           }
             
             #line default
             #line hidden
-            this.Write("            try\r\n            {\r\n                if (responseData_.Length > 0)\r\n\t\t" +
-                    "\t\t{\r\n                    var value = Encoding.UTF8.GetString(responseData_, 0, r" +
-                    "esponseData_.Length);\r\n");
+            this.Write("            try\r\n            {\r\n                if (responseData_.Length > 0)\r\n  " +
+                    "              {\r\n");
             
-            #line 191 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 196 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(response.Type.Contains("ObservableCollection")){
             
             #line default
@@ -1508,55 +1515,55 @@ if(response.HasType){
             this.Write("                    result_ = JsonConvert.DeserializeObject<ODataResponseOfListOf" +
                     "");
             
-            #line 192 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 197 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.Type.Replace("ObservableCollection<","").Replace(">","")));
             
             #line default
             #line hidden
             this.Write(">(value); \r\n");
             
-            #line 193 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 198 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
             #line hidden
             this.Write("                    result_ = JsonConvert.DeserializeObject<");
             
-            #line 194 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 199 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.Type));
             
             #line default
             #line hidden
             this.Write(">(value); \r\n");
             
-            #line 195 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 200 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
           }
             
             #line default
             #line hidden
             this.Write("\t\t\t\t}\r\n");
             
-            #line 197 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 202 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(response.IsSuccess){
             
             #line default
             #line hidden
             
-            #line 198 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 203 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(response.Type.Contains("ObservableCollection")){
             
             #line default
             #line hidden
             this.Write("                return result_.Value; \r\n");
             
-            #line 200 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 205 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
             #line hidden
             this.Write("                return result_; \r\n");
             
-            #line 202 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 207 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
           }
             
             #line default
@@ -1565,7 +1572,7 @@ if(response.HasType){
                     "        throw new SwaggerException(\"Could not deserialize the response body.\", s" +
                     "tatus_, responseData_, exception);\r\n            }\r\n");
             
-            #line 208 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 213 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
@@ -1574,14 +1581,14 @@ if(response.HasType){
                     "        throw new SwaggerException(\"Could not deserialize the response body.\", s" +
                     "tatus_, responseData_, exception);\r\n            }\r\n");
             
-            #line 214 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 219 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
           if(response.TypeInheritsFromException){
             
             #line default
             #line hidden
             this.Write("            if (result_ == null)\r\n                result_ = new ");
             
-            #line 216 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 221 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.Type));
             
             #line default
@@ -1590,79 +1597,79 @@ if(response.HasType){
                     "ta.Add(\"ResponseData\", Encoding.UTF8.GetString(responseData_, 0, responseData_.L" +
                     "ength));\r\n            throw result_;\r\n");
             
-            #line 220 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 225 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
           }else{
             
             #line default
             #line hidden
             this.Write("            throw new SwaggerException<");
             
-            #line 221 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 226 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(response.Type));
             
             #line default
             #line hidden
             this.Write(">(\"A server side error occurred.\", status_, responseData_, result_, null);\r\n");
             
-            #line 222 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 227 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
           }
             
             #line default
             #line hidden
             
-            #line 223 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 228 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }
             
             #line default
             #line hidden
             
-            #line 224 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 229 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 225 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 230 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }else{
             
             #line default
             #line hidden
             
-            #line 226 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 231 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(response.IsSuccess){
             
             #line default
             #line hidden
             
-            #line 227 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 232 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       if(operation.HasResultType){
             
             #line default
             #line hidden
             this.Write("            return default(");
             
-            #line 228 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 233 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.ResultType.Substring(5, operation.ResultType.Length - 6)));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 229 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 234 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }else{
             
             #line default
             #line hidden
             this.Write("            return;     \r\n");
             
-            #line 231 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 236 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write(" \r\n");
             
-            #line 232 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 237 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }else{
             
             #line default
@@ -1670,34 +1677,34 @@ if(response.HasType){
             this.Write("            throw new SwaggerException(\"A server side error occurred.\", status_, " +
                     "responseData_, null);\r\n");
             
-            #line 234 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 239 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
             #line hidden
             
-            #line 235 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 240 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("        }\r\n        else\r\n");
             
-            #line 238 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 243 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
       }
             
             #line default
             #line hidden
             this.Write("        {\r\n");
             
-            #line 240 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 245 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 if(operation.HasDefaultResponse){
             
             #line default
             #line hidden
             this.Write("            var result_ = default(");
             
-            #line 241 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 246 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.DefaultResponse.Type));
             
             #line default
@@ -1705,14 +1712,14 @@ if(operation.HasDefaultResponse){
             this.Write("); \r\n            try\r\n            {\r\n                if (responseData_.Length > 0" +
                     ")\r\n                    result_ = JsonConvert.DeserializeObject<");
             
-            #line 245 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 250 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.DefaultResponse.Type));
             
             #line default
             #line hidden
             this.Write(">(Encoding.UTF8.GetString(responseData_, 0, responseData_.Length));\r\n\r\n");
             
-            #line 247 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 252 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   if(operation.HasOnlyDefaultResponse){
             
             #line default
@@ -1720,7 +1727,7 @@ if(operation.HasDefaultResponse){
             this.Write("                if (status_.Length == 3 && status_.StartsWith(\"2\"))\r\n            " +
                     "        return result_;\r\n");
             
-            #line 250 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 255 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
   }
             
             #line default
@@ -1730,36 +1737,36 @@ if(operation.HasDefaultResponse){
                     "status_, responseData_, exception_);\r\n            }\r\n\r\n            throw new Swa" +
                     "ggerException<");
             
-            #line 257 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 262 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.DefaultResponse.Type));
             
             #line default
             #line hidden
             this.Write(">(\"A server side error occurred.\", status_, responseData_, result_, null);\r\n");
             
-            #line 258 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 263 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n        throw new SwaggerException(\"The HTTP status code of the resp" +
-                    "onse was not expected (\" + (int)response_.StatusCode + \").\", status_, responseDa" +
-                    "ta_, null);\r\n    }\r\n\r\n");
+                    "onse was not expected (\" + (int)response_.StatusCode + \"): \" + value, status_, r" +
+                    "esponseData_, null);\r\n    }\r\n\r\n");
             
-            #line 264 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 269 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("}\r\n");
             
-            #line 266 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 271 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
             #line hidden
             
-            #line 267 "C:\Users\mail\Downloads\NSwag-master\NSwag-master\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
+            #line 272 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
 }
             
             #line default
