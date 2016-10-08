@@ -21,6 +21,7 @@ export interface I<#=Model.Class#> {
 @Injectable()
 export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements I<#=Model.Class#> <#}#>{
     private http: Http = null; 
+    private authHeader: string = undefined; 
     private baseUrl: string = undefined; 
     private jsonParseReviver: (key: string, value: any) => any = undefined; 
 
@@ -29,6 +30,15 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
         this.baseUrl = baseUrl ? baseUrl : "<#=Model.BaseUrl#>"; 
         this.jsonParseReviver = jsonParseReviver;
     }
+	
+    setBearerAuthorization(token: string){
+        this.authHeader = "Bearer " +  token;
+    }
+
+    setBasicAuthorization(userName: string, password: string){
+        this.authHeader = "Basic " +  btoa(userName + ":" + password);
+    }
+
 <#if(Model.IsExtended){#>
 
     protected transformOptions(options: RequestOptionsArgs) {
@@ -105,10 +115,11 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 <#foreach(var parameter in operation.HeaderParameters){#>
                 "<#=parameter.Name#>": <#=parameter.VariableNameLower#>, 
 <#}#>
-<#if(operation.HasFormParameters){#>                'Content-Type': undefined
+<#if(operation.HasFormParameters){#>                'Content-Type': undefined,
 <#}else{#>
-                "Content-Type": "application/json; charset=UTF-8"
+                "Content-Type": "application/json; charset=UTF-8",
 <#}#>
+				"Authorization": this.authHeader
             })
         }<#if(Model.IsExtended){#>)<#}#>).map((response) => {
 <#if(Model.IsExtended){#>
