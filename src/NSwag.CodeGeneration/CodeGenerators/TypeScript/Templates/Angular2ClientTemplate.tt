@@ -31,13 +31,26 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
         this.jsonParseReviver = jsonParseReviver;
     }
 	
+	/**
+	 * Sets the authorization header to OAuth
+	 */
     setBearerAuthorization(token: string){
         this.authHeader = "Bearer " +  token;
     }
-
+	
+	/**
+	 * Sets the authorization header to Basic auth
+	 */
     setBasicAuthorization(userName: string, password: string){
         this.authHeader = "Basic " +  btoa(userName + ":" + password);
     }
+
+	/**
+	 * Returns the current authorization header
+	 */
+	GetAuthHeader(): string{
+		return this.authHeader;
+	}
 
 <#if(Model.IsExtended){#>
 
@@ -119,7 +132,7 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 <#}else{#>
                 "Content-Type": "application/json; charset=UTF-8",
 <#}#>
-				"Authorization": this.authHeader
+				"Authorization": this.GetAuthHeader()
             })
         }<#if(Model.IsExtended){#>)<#}#>).map((response) => {
 <#if(Model.IsExtended){#>
