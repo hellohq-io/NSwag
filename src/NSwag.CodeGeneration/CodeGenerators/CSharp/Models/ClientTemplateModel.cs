@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using NJsonSchema;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag.CodeGeneration.CodeGenerators.Models;
 
@@ -17,19 +18,25 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp.Models
     public class ClientTemplateModel
     {
         private readonly SwaggerService _service;
+        private readonly JsonSchema4 _exceptionSchema;
         private readonly SwaggerToCSharpClientGeneratorSettings _settings;
 
         /// <summary>Initializes a new instance of the <see cref="ClientTemplateModel" /> class.</summary>
         /// <param name="controllerName">Name of the controller.</param>
+        /// <param name="controllerClassName">The class name of the controller.</param>
         /// <param name="operations">The operations.</param>
         /// <param name="service">The service.</param>
+        /// <param name="exceptionSchema">The exception schema.</param>
         /// <param name="settings">The settings.</param>
-        public ClientTemplateModel(string controllerName, IList<OperationModel> operations, SwaggerService service, SwaggerToCSharpClientGeneratorSettings settings)
+        public ClientTemplateModel(string controllerName, string controllerClassName, IList<OperationModel> operations,
+            SwaggerService service, JsonSchema4 exceptionSchema, SwaggerToCSharpClientGeneratorSettings settings)
         {
             _service = service;
+            _exceptionSchema = exceptionSchema;
             _settings = settings;
 
-            Class = controllerName;
+            Class = controllerClassName;
+            ExceptionClass = _settings.ExceptionClass.Replace("{controller}", controllerName);
             Operations = operations;
         }
 
@@ -60,6 +67,9 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp.Models
         /// <summary>Gets a value indicating whether to use a HTTP client creation method.</summary>
         public bool UseHttpClientCreationMethod => _settings.UseHttpClientCreationMethod;
 
+        /// <summary>Gets a value indicating whether to use a HTTP request message creation method.</summary>
+        public bool UseHttpRequestMessageCreationMethod => _settings.UseHttpRequestMessageCreationMethod;
+
         /// <summary>Gets a value indicating whether to generate client interfaces.</summary>
         public bool GenerateClientInterfaces => _settings.GenerateClientInterfaces;
 
@@ -69,10 +79,18 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp.Models
         /// <summary>Gets a value indicating whether the client has operations.</summary>
         public bool HasOperations => Operations.Any();
 
+        /// <summary>Gets the exception class name.</summary>
+        public string ExceptionClass { get; }
+
         /// <summary>Gets the operations.</summary>
         public IList<OperationModel> Operations { get; }
 
-        //// <summary>Gets the JSON converters code.</summary>
-        //public string JsonConverters => CSharpJsonConverters.GenerateConverters(_settings.CSharpGeneratorSettings);
+        /// <summary>Gets the JSON converters code.</summary>
+        public string JsonConverters => CSharpJsonConverters.GenerateConverters(
+            (_settings.CSharpGeneratorSettings.JsonConverters ?? new string[] { })
+            .Concat(RequiresJsonExceptionConverter ? new[] { "JsonExceptionConverter" } : new string[] { }));
+
+        private bool RequiresJsonExceptionConverter =>
+            _service.Operations.Any(o => o.Operation.AllResponses.Any(r => r.Value.InheritsExceptionSchema(_exceptionSchema)));
     }
 }

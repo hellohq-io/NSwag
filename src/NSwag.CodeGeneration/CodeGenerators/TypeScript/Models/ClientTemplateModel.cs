@@ -17,14 +17,14 @@ namespace NSwag.CodeGeneration.CodeGenerators.TypeScript.Models
     public class ClientTemplateModel
     {
         /// <summary>Initializes a new instance of the <see cref="ClientTemplateModel" /> class.</summary>
-        /// <param name="controllerName">Name of the controller.</param>
+        /// <param name="controllerClassName">Name of the controller.</param>
         /// <param name="operations">The operations.</param>
         /// <param name="service">The service.</param>
         /// <param name="settings">The settings.</param>
-        public ClientTemplateModel(string controllerName, IList<OperationModel> operations, SwaggerService service, SwaggerToTypeScriptClientGeneratorSettings settings)
+        public ClientTemplateModel(string controllerClassName, IList<OperationModel> operations, SwaggerService service, SwaggerToTypeScriptClientGeneratorSettings settings)
         {
-            Class = controllerName;
-            IsExtended = settings.TypeScriptGeneratorSettings.ExtendedClasses?.Any(c => c + "Base" == controllerName) == true;
+            Class = controllerClassName;
+            IsExtended = settings.TypeScriptGeneratorSettings.ExtendedClasses?.Any(c => c + "Base" == controllerClassName) == true;
 
             HasOperations = operations.Any();
             Operations = operations;
@@ -35,6 +35,8 @@ namespace NSwag.CodeGeneration.CodeGenerators.TypeScript.Models
 
             PromiseType = settings.PromiseType == TypeScript.PromiseType.Promise ? "Promise" : "Q.Promise";
             PromiseConstructor = settings.PromiseType == TypeScript.PromiseType.Promise ? "new Promise" : "Q.Promise";
+
+            UseAureliaHttpInjection = settings.Template == TypeScriptTemplate.Aurelia;
         }
 
         /// <summary>Gets the class name.</summary>
@@ -63,5 +65,8 @@ namespace NSwag.CodeGeneration.CodeGenerators.TypeScript.Models
 
         /// <summary>Gets the promise constructor code.</summary>
         public string PromiseConstructor { get; }
+
+        /// <summary>Gets or sets a value indicating whether to use Aurelia HTTP injection.</summary>
+        public bool UseAureliaHttpInjection { get; set; }
     }
 }

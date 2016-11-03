@@ -25,7 +25,19 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp
         /// <exception cref="System.ArgumentNullException">service</exception>
         /// <exception cref="ArgumentNullException"><paramref name="service" /> is <see langword="null" />.</exception>
         public SwaggerToCSharpWebApiControllerGenerator(SwaggerService service, SwaggerToCSharpWebApiControllerGeneratorSettings settings)
-            : base(service, settings)
+            : this(service, settings, SwaggerToCSharpTypeResolver.CreateWithDefinitions(settings.CSharpGeneratorSettings, service.Definitions))
+        {
+
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="SwaggerToCSharpWebApiControllerGenerator" /> class.</summary>
+        /// <param name="service">The service.</param>
+        /// <param name="settings">The settings.</param>
+        /// <param name="resolver">The resolver.</param>
+        /// <exception cref="System.ArgumentNullException">service</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="service" /> is <see langword="null" />.</exception>
+        public SwaggerToCSharpWebApiControllerGenerator(SwaggerService service, SwaggerToCSharpWebApiControllerGeneratorSettings settings, SwaggerToCSharpTypeResolver resolver)
+            : base(service, settings, resolver)
         {
             if (service == null)
                 throw new ArgumentNullException(nameof(service));
@@ -49,14 +61,14 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp
         /// <returns>The file contents.</returns>
         public override string GenerateFile()
         {
-            return GenerateFile(_service, Resolver, ClientGeneratorOutputType.Full);
+            return GenerateFile(_service, ClientGeneratorOutputType.Full);
         }
 
-        internal override string GenerateClientClass(string controllerName, IList<OperationModel> operations, ClientGeneratorOutputType outputType)
+        internal override string GenerateClientClass(string controllerName, string controllerClassName, IList<OperationModel> operations, ClientGeneratorOutputType outputType)
         {
             var model = new ControllerTemplateModel(Settings)
             {
-                Class = controllerName,
+                Class = controllerClassName,
                 BaseUrl = _service.BaseUrl,
                 Operations = operations
             };

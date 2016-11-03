@@ -16,7 +16,7 @@ namespace NSwag.Integration.WebAPI.Controllers
             return new List<Person>
             {
                 new Person(),
-                new Person()
+                new Teacher { Course = "SE" }
             };
         }
 
@@ -26,7 +26,7 @@ namespace NSwag.Integration.WebAPI.Controllers
             return new List<Person>
             {
                 new Person(),
-                new Person()
+                new Teacher { Course = "SE" }
             };
         }
 
@@ -36,7 +36,7 @@ namespace NSwag.Integration.WebAPI.Controllers
             return new List<Person>
             {
                 new Person(),
-                new Person()
+                new Teacher { Course = "SE" }
             };
         }
 
@@ -46,6 +46,14 @@ namespace NSwag.Integration.WebAPI.Controllers
         public Person Get(Guid id)
         {
             return new Person();
+        }
+
+        [Route("Throw")]
+        [ResponseType(typeof(Person))]
+        [ResponseType("500", typeof(PersonNotFoundException))]
+        public Person Throw(Guid id)
+        {
+            throw new PersonNotFoundException(id);
         }
 
         /// <summary>Gets the name of a person.</summary>

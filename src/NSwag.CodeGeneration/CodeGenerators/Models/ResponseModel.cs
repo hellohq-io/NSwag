@@ -7,8 +7,8 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Linq;
 using NJsonSchema;
+using NJsonSchema.CodeGeneration;
 
 namespace NSwag.CodeGeneration.CodeGenerators.Models
 {
@@ -16,14 +16,17 @@ namespace NSwag.CodeGeneration.CodeGenerators.Models
     public class ResponseModel
     {
         private readonly SwaggerResponse _response;
+        private readonly JsonSchema4 _exceptionSchema;
         private readonly ClientGeneratorBase _clientGeneratorBase;
 
         /// <summary>Initializes a new instance of the <see cref="ResponseModel" /> class.</summary>
         /// <param name="response">The response.</param>
+        /// <param name="exceptionSchema">The exception schema.</param>
         /// <param name="clientGeneratorBase">The client generator base.</param>
-        public ResponseModel(KeyValuePair<string, SwaggerResponse> response, ClientGeneratorBase clientGeneratorBase)
+        public ResponseModel(KeyValuePair<string, SwaggerResponse> response, JsonSchema4 exceptionSchema, ClientGeneratorBase clientGeneratorBase)
         {
             _response = response.Value;
+            _exceptionSchema = exceptionSchema;
             _clientGeneratorBase = clientGeneratorBase;
 
             StatusCode = response.Key;
@@ -42,10 +45,18 @@ namespace NSwag.CodeGeneration.CodeGenerators.Models
         public bool IsSuccess => HttpUtilities.IsSuccessStatusCode(StatusCode);
 
         /// <summary>Gets a value indicating whether the response is of type date.</summary>
-        public bool IsDate => _clientGeneratorBase.GetType(_response.ActualResponseSchema, IsNullable, "Response") == "Date";
+        public bool IsDate =>
+            (_response.ActualResponseSchema.Format == JsonFormatStrings.DateTime ||
+            _response.ActualResponseSchema.Format == JsonFormatStrings.Date) &&
+            _clientGeneratorBase.GetType(_response.ActualResponseSchema, IsNullable, "Response") != "string";
 
         /// <summary>Gets a value indicating whether this is a file response.</summary>
         public bool IsFile => Schema != null && Schema.ActualSchema.Type == JsonObjectType.File;
+
+        /// <summary>Gets the response's exception description.</summary>
+        public string ExceptionDescription => !string.IsNullOrEmpty(_response.Description) ?
+            ConversionUtilities.ConvertToStringLiteral(_response.Description) :
+            "A server side error occurred.";
 
         /// <summary>Gets the actual response schema.</summary>
         public JsonSchema4 ActualResponseSchema => _response.ActualResponseSchema;
@@ -57,10 +68,7 @@ namespace NSwag.CodeGeneration.CodeGenerators.Models
         public bool IsNullable => _response.IsNullable(_clientGeneratorBase.BaseSettings.CodeGeneratorSettings.NullHandling);
 
         /// <summary>Gets a value indicating whether the response type inherits from exception.</summary>
-        public bool TypeInheritsFromException => _response
-            .ActualResponseSchema?
-            .InheritedSchemas
-            .Any(s => new[] { "innerexception", "message", "source", "stacktrace" }.All(p => s.ActualSchema.Properties.Any(i => i.Key.ToLowerInvariant() == p))) == true;
+        public bool InheritsExceptionSchema => _response.InheritsExceptionSchema(_exceptionSchema);
 
         // TODO: Find way to remove TypeScript only properties
 

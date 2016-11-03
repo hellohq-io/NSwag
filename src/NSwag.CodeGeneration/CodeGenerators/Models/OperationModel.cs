@@ -39,12 +39,16 @@ namespace NSwag.CodeGeneration.CodeGenerators.Models
         /// <summary>Gets a value indicating whether the HTTP method is GET or DELETE.</summary>
         public bool IsGetOrDelete => HttpMethod == SwaggerOperationMethod.Get || HttpMethod == SwaggerOperationMethod.Delete;
 
+        /// <summary>Gets a value indicating whether the HTTP method is GET or HEAD.</summary>
+        public bool IsGetOrHead => HttpMethod == SwaggerOperationMethod.Get || HttpMethod == SwaggerOperationMethod.Head;
+
         /// <summary>Gets the operation name in lowercase.</summary>
         public string OperationNameLower => ConversionUtilities.ConvertToLowerCamelCase(OperationName, false);
 
         /// <summary>Gets the operation name in uppercase.</summary>
         public string OperationNameUpper => ConversionUtilities.ConvertToUpperCamelCase(OperationName, false);
 
+        // TODO: Remove this (not may not work correctly)
         /// <summary>Gets or sets a value indicating whether the operation has a result type (i.e. not void).</summary>
         public bool HasResultType { get; set; }
 
@@ -85,7 +89,7 @@ namespace NSwag.CodeGeneration.CodeGenerators.Models
         public IEnumerable<ParameterModel> PathParameters => Parameters.Where(p => p.Kind == SwaggerParameterKind.Path);
 
         /// <summary>Gets the query parameters.</summary>
-        public IEnumerable<ParameterModel> QueryParameters => Parameters.Where(p => p.Kind == SwaggerParameterKind.Query);
+        public IEnumerable<ParameterModel> QueryParameters => Parameters.Where(p => p.Kind == SwaggerParameterKind.Query || p.Kind == SwaggerParameterKind.ModelBinding);
 
         /// <summary>Gets the header parameters.</summary>
         public IEnumerable<ParameterModel> HeaderParameters => Parameters.Where(p => p.Kind == SwaggerParameterKind.Header);
