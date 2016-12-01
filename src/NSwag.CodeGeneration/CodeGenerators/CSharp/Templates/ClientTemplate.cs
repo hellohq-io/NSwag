@@ -626,7 +626,7 @@ foreach(var parameter in operation.Parameters){
             #line hidden
             
             #line 69 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
-  if(parameter.VariableNameLower != "id"){
+  if(!parameter.IsRequired){
             
             #line default
             #line hidden
@@ -810,7 +810,7 @@ foreach(var parameter in operation.Parameters){
             #line hidden
             
             #line 81 "C:\HQSB\NSwag\src\NSwag.CodeGeneration\CodeGenerators\CSharp\Templates\ClientTemplate.tt"
-  if(parameter.VariableNameLower != "id"){
+  if(!parameter.IsRequired){
             
             #line default
             #line hidden

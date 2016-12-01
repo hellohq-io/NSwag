@@ -140,8 +140,11 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 					"Authorization": this.GetAuthHeader()
 				})
 			}<#if(Model.IsExtended){#>)<#}#>).map((response) => {
-				if(fromCache)
-					localStorage.setItem(cacheKey, btoa(response.text()));
+				if(fromCache) {
+					try {
+						localStorage.setItem(cacheKey, btoa(response.text()));
+					} catch(e) {}
+				}
 <#if(Model.IsExtended){#>
 				return this.transformResult(url_, response, (response) => this.process<#=operation.OperationNameUpper#>(response));
 <#}else{#>
@@ -266,4 +269,28 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 	}
 <#}#>}
 <#}#>
+
+export class HQAPIEntity {
+
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.id = data["Id"] !== undefined ? data["Id"] : 0;
+            this.createdBy = data["CreatedBy"] !== undefined ? data["CreatedBy"] : 0;
+            this.updatedBy = data["UpdatedBy"] !== undefined ? data["UpdatedBy"] : 0;
+            this.createdOn = data["CreatedOn"] ? new Date(data["CreatedOn"].toString()) : null;
+            this.updatedOn = data["UpdatedOn"] ? new Date(data["UpdatedOn"].toString()) : null;
+        }
+    }
+
+    /** The unique identifier of this entity */
+    id: number; 
+    /** The id of the user who created this entity */
+    createdBy: number; 
+    /** The id of the last user who modified this entity */
+    updatedBy: number; 
+    /** The date and time this entity was created, in UTC */
+    createdOn: Date; 
+    /** The last date and time this entity was updated, in UTC */
+    updatedOn: Date;
+} 
 

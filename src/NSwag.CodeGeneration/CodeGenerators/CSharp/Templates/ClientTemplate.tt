@@ -66,7 +66,7 @@ public partial class <#=Model.Class#> <#if(Model.HasBaseType){#>: <#}#><#if(Mode
 <#  }}if(operation.HasResultDescription){#>    /// <returns><#=ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)#></returns>
 <#  }#>    /// <exception cref="<#=Model.ExceptionClass#>">A server side error occurred.</exception>
 <#  if(operation.IsDeprecated){#>    [Obsolete]
-<#  }#>    public <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(<#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableNameLower#><#  if(parameter.VariableNameLower != "id"){#> = null<#  }#><#if(!parameter.IsLast){#>, <#}}#>)
+<#  }#>    public <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(<#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableNameLower#><#  if(!parameter.IsRequired){#> = null<#  }#><#if(!parameter.IsLast){#>, <#}}#>)
     {
         return <#=operation.OperationNameUpper#>Async(CancellationToken.None, <#foreach(var parameter in operation.Parameters){#><#=parameter.VariableNameLower#><#if(!parameter.IsLast){#>, <#}}#>);
     }
@@ -78,7 +78,7 @@ public partial class <#=Model.Class#> <#if(Model.HasBaseType){#>: <#}#><#if(Mode
 <#  if(operation.HasResultDescription){#>    /// <returns><#=ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)#></returns>
 <#  }#>    /// <exception cref="<#=Model.ExceptionClass#>">A server side error occurred.</exception>
 <#  if(operation.IsDeprecated){#>    [Obsolete]
-<#  }#>    public async <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(CancellationToken cancellationToken, <#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableNameLower#><#  if(parameter.VariableNameLower != "id"){#> = null<#  }#><#if(!parameter.IsLast){#>, <#}}#>)
+<#  }#>    public async <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(CancellationToken cancellationToken, <#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableNameLower#><#  if(!parameter.IsRequired){#> = null<#  }#><#if(!parameter.IsLast){#>, <#}}#>)
     {
         var url_ = string.Format("{0}/{1}<#if(operation.QueryParameters.Any()){#>?<#}#>", BaseUrl, "<#=operation.Path#>");
 <#foreach(var parameter in operation.PathParameters){#>
