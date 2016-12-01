@@ -1,30 +1,32 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
-using NJsonSchema;
-using NSwag;
-using NSwag.CodeGeneration;
+using NSwag.Commands;
+using NSwag.Commands.Base;
 
 namespace NSwagStudio.Views.SwaggerGenerators
 {
-    public partial class JsonSchemaInputView : ISwaggerGenerator
+    public partial class JsonSchemaInputView : ISwaggerGeneratorView
     {
-        public JsonSchemaInputView(NSwagDocument document)
+        private readonly JsonSchemaToSwaggerCommand _command;
+
+        public JsonSchemaInputView(JsonSchemaToSwaggerCommand command)
         {
+            _command = command;
             InitializeComponent();
-            DataContext = document;
+            DataContext = command;
         }
 
         public string Title => "JSON Schema";
+
+        public OutputCommandBase Command => _command;
 
         public async Task<string> GenerateSwaggerAsync()
         {
             try
             {
-                var schema = JsonSchema4.FromJson(JsonSchema.Text);
-                var service = new SwaggerService();
-                service.Definitions[schema.TypeNameRaw ?? "MyType"] = schema;
-                return service.ToJson();
+                var document = await _command.RunAsync();
+                return await Task.Run(() => document.ToJson());
             }
             catch (Exception exception)
             {

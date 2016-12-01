@@ -23,7 +23,7 @@ using System.Runtime.Loader;
 
 namespace NSwag.CodeGeneration.SwaggerGenerators
 {
-    /// <summary>Generates a <see cref="SwaggerService"/> from a Web API controller or type which is located in a .NET assembly.</summary>
+    /// <summary>Generates a <see cref="SwaggerDocument"/> from a Web API controller or type which is located in a .NET assembly.</summary>
     public class AssemblyTypeToSwaggerGenerator : AssemblyTypeToSwaggerGeneratorBase
     {
         /// <summary>Initializes a new instance of the <see cref="AssemblyTypeToSwaggerGenerator"/> class.</summary>
@@ -53,15 +53,15 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
         /// <summary>Generates the Swagger definition for the given classes without operations (used for class generation).</summary>
         /// <param name="classNames">The class names.</param>
         /// <returns>The Swagger definition.</returns>
-        public override SwaggerService Generate(string[] classNames)
+        public override SwaggerDocument Generate(string[] classNames)
         {
 #if FullNet
             using (var isolated = new AppDomainIsolation<NetAssemblyLoader>(Path.GetDirectoryName(Path.GetFullPath(Settings.AssemblyPath)), Settings.AssemblyConfig))
-                return SwaggerService.FromJson(isolated.Object.FromAssemblyType(classNames, JsonConvert.SerializeObject(Settings)));
+                return SwaggerDocument.FromJson(isolated.Object.FromAssemblyType(classNames, JsonConvert.SerializeObject(Settings)));
 #else
             var loader = new NetAssemblyLoader();
             var data = loader.FromAssemblyType(classNames, JsonConvert.SerializeObject(Settings));
-            return SwaggerService.FromJson(data);
+            return SwaggerDocument.FromJson(data);
 #endif
         }
 
@@ -77,14 +77,13 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
         {
             internal string FromAssemblyType(string[] classNames, string settingsData)
             {
+                var document = new SwaggerDocument();
                 var settings = JsonConvert.DeserializeObject<AssemblyTypeToSwaggerGeneratorSettings>(settingsData);
+
                 RegisterReferencePaths(GetAllReferencePaths(settings));
 
-                var service = new SwaggerService();
-
                 var generator = new JsonSchemaGenerator(settings);
-                var schemaResolver = new SchemaResolver();
-                var schemaDefinitionAppender = new SwaggerServiceSchemaDefinitionAppender(service, settings.TypeNameGenerator);
+                var schemaResolver = new SwaggerSchemaResolver(document, settings);
 
 #if FullNet
                 var assembly = Assembly.LoadFrom(settings.AssemblyPath);
@@ -94,11 +93,11 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
                 foreach (var className in classNames)
                 {
                     var type = assembly.GetType(className);
-                    var schema = generator.Generate(type, schemaResolver, schemaDefinitionAppender);
-                    service.Definitions[type.Name] = schema;
+                    var schema = generator.Generate(type, schemaResolver);
+                    document.Definitions[type.Name] = schema;
                 }
 
-                return service.ToJson();
+                return document.ToJson();
             }
 
             internal string[] GetClasses(string assemblyPath, IEnumerable<string> referencePaths)

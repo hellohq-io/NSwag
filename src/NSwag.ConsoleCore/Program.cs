@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
-using System.Text;
-using System.Xml.Linq;
 using NSwag.CodeGeneration;
 using NSwag.Commands;
 
@@ -12,10 +9,9 @@ namespace NSwag
     {
         static int Main(string[] args)
         {
-            Directory.SetCurrentDirectory("C:\\Data\\Timely.Web\\src\\Timely.Aurelia");
-
+            Console.Write("NSwag command line tool for .NET Core, ");
             var processor = new NSwagCommandProcessor(typeof(NSwagDocument).GetTypeInfo().Assembly, new CoreConsoleHost());
-            return processor.Process(new[] { "run" });
+            return processor.Process(args);
         }
     }
 }

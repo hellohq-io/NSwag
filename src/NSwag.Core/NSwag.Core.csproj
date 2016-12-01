@@ -96,8 +96,8 @@
     <Compile Include="SwaggerSecurityRequirement.cs" />
     <Compile Include="SwaggerSecurityScheme.cs" />
     <Compile Include="SwaggerSecuritySchemeType.cs" />
-    <Compile Include="SwaggerService.cs" />
-    <Compile Include="SwaggerServiceSchemaDefinitionAppender.cs" />
+    <Compile Include="SwaggerDocument.cs" />
+    <Compile Include="SwaggerSchemaResolver.cs" />
     <Compile Include="SwaggerTag.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,6 +112,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\NJsonSchema\src\NJsonSchema\NJsonSchema.csproj">
+      <Project>{7b7a2e32-e808-4a19-98b1-37e766580f8c}</Project>
+      <Name>NJsonSchema</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\NJsonSchema\src\NJsonSchema\NJsonSchema.csproj">
       <Project>{7b7a2e32-e808-4a19-98b1-37e766580f8c}</Project>
       <Name>NJsonSchema</Name>

@@ -1,8 +1,32 @@
 ﻿<#@ template visibility="internal" #>
-<#@ import namespace="NJsonSchema.CodeGeneration" #>
-<#@ import namespace="NSwag.CodeGeneration.CodeGenerators.TypeScript" #>
-<#@ import namespace="System.Linq" #>
+<#@ import namespace="NJsonSchema" #>
+<#@ import namespace="CodeGenerators.TypeScript" #>
 import { AppConfig } from '../config/app.config';
+
+
+export class HQAPIEntity {
+
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.id = data["Id"] !== undefined ? data["Id"] : 0;
+            this.createdBy = data["CreatedBy"] !== undefined ? data["CreatedBy"] : 0;
+            this.updatedBy = data["UpdatedBy"] !== undefined ? data["UpdatedBy"] : 0;
+            this.createdOn = data["CreatedOn"] ? new Date(data["CreatedOn"].toString()) : null;
+            this.updatedOn = data["UpdatedOn"] ? new Date(data["UpdatedOn"].toString()) : null;
+        }
+    }
+
+    /** The unique identifier of this entity */
+    id: number; 
+    /** The id of the user who created this entity */
+    createdBy: number; 
+    /** The id of the last user who modified this entity */
+    updatedBy: number; 
+    /** The date and time this entity was created, in UTC */
+    createdOn: Date; 
+    /** The last date and time this entity was updated, in UTC */
+    updatedOn: Date;
+} 
 
 <#if(Model.HasOperations){#>
 <#if(Model.GenerateClientInterfaces){#>
@@ -11,11 +35,11 @@ export interface I<#=Model.Class#> {
 <#if(operation.HasDocumentation){#>    /**
 <#if(operation.HasSummary){#>     * <#=operation.Summary#>
 <#}#><#foreach(var parameter in operation.Parameters){#>
-<#if(parameter.HasDescription){#>     * @<#=parameter.VariableNameLower#> <#=parameter.Description ?? ""#>
+<#if(parameter.HasDescription){#>     * @<#=parameter.VariableName#> <#=parameter.Description ?? ""#>
 <#}#><#}#><#if(operation.HasResultDescription){#>     * @return <#=operation.ResultDescription#>
 <#}#><#if(operation.IsDeprecated){#>     * @deprecated
 <#}#>     */
-<#}#>    <#=operation.OperationNameLower#>(<#foreach(var parameter in operation.Parameters){#><#=parameter.VariableNameLower#>: <#=parameter.Type#><#if(!parameter.IsLast){#>, <#}#><#}#>): Observable<<#=operation.ResultType#>>;
+<#}#>    <#=operation.OperationNameLower#>(<#foreach(var parameter in operation.Parameters){#><#=parameter.VariableName#>: <#=parameter.Type#><#if(!parameter.IsLast){#>, <#}#><#}#>): Observable<<#=operation.ResultType#>>;
 <#}#>}
 <#}#>
 
@@ -24,7 +48,7 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
     private http: Http = null; 
     private authHeader: string = undefined; 
     private baseUrl: string = undefined; 
-    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+    protected jsonParseReviver: <#if(Model.SupportsStrictNullChecks){#>((key: string, value: any) => any) | undefined<#}else{#>(key: string, value: any) => any<#}#> = undefined;
 
     constructor(@Inject(Http) http: Http, appConfig: AppConfig, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http; 
@@ -68,59 +92,14 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 <#if(operation.HasDocumentation){#>    /**
 <#if(operation.HasSummary){#>     * <#=operation.Summary#>
 <#}#><#foreach(var parameter in operation.Parameters){#>
-<#if(parameter.HasDescription){#>     * @<#=parameter.VariableNameLower#> <#=parameter.Description ?? ""#>
+<#if(parameter.HasDescription){#>     * @<#=parameter.VariableName#> <#=parameter.Description ?? ""#>
 <#}#><#}#><#if(operation.HasResultDescription){#>     * @return <#=operation.ResultDescription#>
 <#}#><#if(operation.IsDeprecated){#>     * @deprecated
 <#}#>     */
-<#}#>    <#=operation.OperationNameLower#>(<#foreach(var parameter in operation.Parameters){#><#=parameter.VariableNameLower#>: <#=parameter.Type#><#if(!parameter.IsLast){#>, <#} else {#>, fromCache = false<#}#><#}#>): Observable<<#=operation.ResultType#>> {
-        let url_ = this.baseUrl + "/<#=operation.Path#><#if(operation.QueryParameters.Any()){#>?<#}#>"; 
+<#}#>    <#=operation.OperationNameLower#>(<#foreach(var parameter in operation.Parameters){#><#=parameter.VariableName#>: <#=parameter.Type#><#if(!parameter.IsLast){#>, <#} else {#>, fromCache = false<#}#><#}#>): Observable<<#=operation.ResultType#>> {
+        <#=TemplatePartGenerator.RenderRequestUrlCode(operation, 2)#>
 
-<#foreach(var parameter in operation.PathParameters){#>
-        if (<#=parameter.VariableNameLower#> === undefined || <#=parameter.VariableNameLower#> === null)
-            throw new Error("The parameter '<#=parameter.VariableNameLower#>' must be defined.");
-<#  if(parameter.IsDateArray){#>
-        url_ = url_.replace("{<#=parameter.Name#>}", encodeURIComponent(<#=parameter.VariableNameLower#>.map(s_ => s_.toJSON()).join())); 
-<#  }else if(parameter.IsDate){#>
-        url_ = url_.replace("{<#=parameter.Name#>}", encodeURIComponent("" + <#=parameter.VariableNameLower#>.toJSON())); 
-<#  }else if(parameter.IsArray){#>
-        url_ = url_.replace("{<#=parameter.Name#>}", encodeURIComponent(<#=parameter.VariableNameLower#>.join())); 
-<#  }else{#>
-        url_ = url_.replace("{<#=parameter.Name#>}", encodeURIComponent("" + <#=parameter.VariableNameLower#>)); 
-<#  }#>
-<#}#>
-
-<#foreach(var parameter in operation.QueryParameters){#>
-<#  if (parameter.IsRequired) { 
-        if(parameter.IsNullable){#>
-        if (<#=parameter.VariableNameLower#> === undefined)
-            throw new Error("The parameter '<#=parameter.VariableNameLower#>' must be defined.");
-        else
-<#      }else{#>
-        if (<#=parameter.VariableNameLower#> === undefined || <#=parameter.VariableNameLower#> === null)
-            throw new Error("The parameter '<#=parameter.VariableNameLower#>' must be defined and cannot be null.");
-        else
-<#      }
-    }else{
-        if(parameter.IsNullable){#>
-        if (<#=parameter.VariableNameLower#> !== undefined)
-<#      }else{#>
-        if (<#=parameter.VariableNameLower#> === null)
-            throw new Error("The parameter '<#=parameter.VariableNameLower#>' cannot be null.");
-        else if (<#=parameter.VariableNameLower#> !== undefined)
-<#      }
-    }#>
-<#  if(parameter.IsDateArray){#>
-            <#=parameter.VariableNameLower#>.forEach(item => { url_ += "<#=parameter.Name#>=" + encodeURIComponent("" + item.toJSON()) + "&"; });
-<#  }else if(parameter.IsDate){#>
-            url_ += "<#=parameter.Name#>=" + encodeURIComponent("" + <#=parameter.VariableNameLower#>.toJSON()) + "&"; 
-<#  }else if(parameter.IsArray){#>
-            <#=parameter.VariableNameLower#>.forEach(item => { url_ += "<#=parameter.Name#>=" + encodeURIComponent("" + item) + "&"; });
-<#  }else{#>
-            url_ += "<#=parameter.Name#>=" + encodeURIComponent("" + <#=parameter.VariableNameLower#>) + "&"; 
-<#  }
-}#>
-
-        <#=RequestBodyGenerator.Render(operation, 2)#>
+        <#=TemplatePartGenerator.RenderRequestBodyCode(operation, 2)#>
 		var cacheKey = fromCache ? btoa(url_) : null;
         var cacheEntry = fromCache ? localStorage.getItem(cacheKey) : null;
 
@@ -131,7 +110,7 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 				method: "<#=operation.HttpMethodLower#>",
 				headers: new Headers({
 <#foreach(var parameter in operation.HeaderParameters){#>
-					"<#=parameter.Name#>": <#=parameter.VariableNameLower#>, 
+                "<#=parameter.Name#>": <#=parameter.VariableName#>, 
 <#}#>
 <#if(operation.HasFormParameters){#>                'Content-Type': undefined,
 <#}else{#>
@@ -168,7 +147,7 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 			console.log('Getting ' + url_ + ' from cache');
 			return new Observable<<#=operation.ResultType#>>(observer => {
 				setTimeout(() => {
-					observer.next(this.parse<#=operation.OperationNameUpper#>(atob(cacheEntry), '200'));
+					observer.next(this.parse<#=operation.OperationNameUpper#>(atob(cacheEntry), 200));
 				}, 0);
 				setTimeout(() => {
 					observer.complete();
@@ -177,12 +156,12 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 		}
     }
 
-    private process<#=operation.OperationNameUpper#>(response: Response) {
-        const data = response.text();
-        const status = response.status.toString(); 
+    protected process<#=operation.OperationNameUpper#>(response: Response): <#=operation.ResultType#> {
+        const responseText = response.text();
+        const status = response.status; 
 
 <#foreach(var response in operation.Responses){#>
-        if (status === "<#=response.StatusCode#>") {
+        if (status === <#=response.StatusCode#>) {
 <#if(response.HasType){#>
 <#  if(response.IsDate){#>
             result<#=response.StatusCode#> = new Date(data);
@@ -193,7 +172,7 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 <#      }#>
 <#  }#>
 <#  if(response.IsSuccess){#>
-            return this.parse<#=operation.OperationNameUpper#>(data, status);
+            return this.parse<#=operation.OperationNameUpper#>(responseText, status);
 <#  }else{#>
             throw result<#=response.StatusCode#>; 
 <#  }
@@ -221,9 +200,9 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
         }
     }
 
-    private parse<#=operation.OperationNameUpper#>(data: string, status: string) {
+    private parse<#=operation.OperationNameUpper#>(data: string, status: number) {
 <#foreach(var response in operation.Responses){#>
-        if (status === "<#=response.StatusCode#>") {
+        if (status === <#=response.StatusCode#>) {
 <#if(response.HasType){#>
             let result<#=response.StatusCode#>: <#=response.Type#> = null; 
 <#  if(response.IsDate){#>
@@ -267,30 +246,10 @@ export class <#=Model.Class#> <#if(Model.GenerateClientInterfaces){#>implements 
 <#}#>
         }
 	}
-<#}#>}
 <#}#>
 
-export class HQAPIEntity {
+    <#=TemplatePartGenerator.RenderClientMethodsCode(Model, 1)#>
+	}
+<#}#>
 
-    constructor(data?: any) {
-        if (data !== undefined) {
-            this.id = data["Id"] !== undefined ? data["Id"] : 0;
-            this.createdBy = data["CreatedBy"] !== undefined ? data["CreatedBy"] : 0;
-            this.updatedBy = data["UpdatedBy"] !== undefined ? data["UpdatedBy"] : 0;
-            this.createdOn = data["CreatedOn"] ? new Date(data["CreatedOn"].toString()) : null;
-            this.updatedOn = data["UpdatedOn"] ? new Date(data["UpdatedOn"].toString()) : null;
-        }
-    }
-
-    /** The unique identifier of this entity */
-    id: number; 
-    /** The id of the user who created this entity */
-    createdBy: number; 
-    /** The id of the last user who modified this entity */
-    updatedBy: number; 
-    /** The date and time this entity was created, in UTC */
-    createdOn: Date; 
-    /** The last date and time this entity was updated, in UTC */
-    updatedOn: Date;
-} 
-
+	

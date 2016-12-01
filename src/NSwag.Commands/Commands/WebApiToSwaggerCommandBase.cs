@@ -31,7 +31,7 @@ namespace NSwag.Commands
 
         [JsonIgnore]
         public WebApiAssemblyToSwaggerGeneratorSettings Settings { get; set; }
-        
+
         [Argument(Name = "Assembly", Description = "The path or paths to the Web API .NET assemblies (comma separated).")]
         public string[] AssemblyPaths
         {
@@ -60,8 +60,12 @@ namespace NSwag.Commands
             set { Settings.IsAspNetCore = value; }
         }
 
+        [JsonIgnore]
         [Argument(Name = "Controller", IsRequired = false, Description = "The Web API controller full class name or empty to load all controllers from the assembly.")]
-        public string ControllerName { get; set; }
+        public string ControllerName
+        {
+            set { ControllerNames = new[] { value }; }
+        }
 
         [Argument(Name = "Controllers", IsRequired = false, Description = "The Web API controller full class names or empty to load all controllers from the assembly (comma separated).")]
         public string[] ControllerNames { get; set; }
@@ -150,7 +154,7 @@ namespace NSwag.Commands
             return null;
         }
 
-        public async Task<SwaggerService> RunAsync()
+        public async Task<SwaggerDocument> RunAsync()
         {
             return await Task.Run(() =>
             {
@@ -165,29 +169,24 @@ namespace NSwag.Commands
                     Settings.DocumentTemplate = null;
 
                 var generator = CreateGenerator();
-
-                var controllerNames = ControllerNames.ToList();
-                if (!string.IsNullOrEmpty(ControllerName))
-                    controllerNames.Add(ControllerName);
-
-                controllerNames = controllerNames.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+                var controllerNames = ControllerNames.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
                 if (!controllerNames.Any() && Settings.AssemblyPaths?.Length > 0)
                     controllerNames = generator.GetControllerClasses().ToList();
 
-                var service = generator.GenerateForControllers(controllerNames);
+                var document = generator.GenerateForControllers(controllerNames);
 
                 if (ServiceHost == ".")
-                    service.Host = string.Empty;
+                    document.Host = string.Empty;
                 else if (!string.IsNullOrEmpty(ServiceHost))
-                    service.Host = ServiceHost;
+                    document.Host = ServiceHost;
 
                 if (ServiceSchemes != null && ServiceSchemes.Any())
-                    service.Schemes = ServiceSchemes.Select(s => (SwaggerSchema)Enum.Parse(typeof(SwaggerSchema), s, true)).ToList();
+                    document.Schemes = ServiceSchemes.Select(s => (SwaggerSchema)Enum.Parse(typeof(SwaggerSchema), s, true)).ToList();
 
                 if (!string.IsNullOrEmpty(ServiceBasePath))
-                    service.BasePath = ServiceBasePath;
+                    document.BasePath = ServiceBasePath;
 
-                return service;
+                return document;
             });
         }
 

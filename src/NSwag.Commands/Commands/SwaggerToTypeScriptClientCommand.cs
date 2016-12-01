@@ -51,7 +51,15 @@ namespace NSwag.Commands
             set { Settings.TypeScriptGeneratorSettings.Namespace = value; }
         }
 
-        [Argument(Name = "Template", IsRequired = false, Description = "The type of the asynchronism handling ('JQueryCallbacks', 'JQueryPromises', 'AngularJS', 'Angular2').")]
+        [Argument(Name = "TypeScriptVersion", IsRequired = false, Description = "The target TypeScript version (default: 1.8).")]
+        public decimal TypeScriptVersion
+        {
+            get { return Settings.TypeScriptGeneratorSettings.TypeScriptVersion; }
+            set { Settings.TypeScriptGeneratorSettings.TypeScriptVersion = value; }
+        }
+
+        [Argument(Name = "Template", IsRequired = false, Description = "The type of the asynchronism handling " +
+                                                                       "('JQueryCallbacks', 'JQueryPromises', 'AngularJS', 'Angular2', 'Fetch', 'Aurelia').")]
         public TypeScriptTemplate Template
         {
             get { return Settings.Template; }
@@ -79,11 +87,18 @@ namespace NSwag.Commands
             set { Settings.GenerateClientClasses = value; }
         }
 
-        [Argument(Name = "GenerateClientInterfaces", IsRequired = false, Description = "Specifies whether generate interfaces for the client classes.")]
+        [Argument(Name = "GenerateClientInterfaces", IsRequired = false, Description = "Specifies whether generate interfaces for the client classes (default: false).")]
         public bool GenerateClientInterfaces
         {
             get { return Settings.GenerateClientInterfaces; }
             set { Settings.GenerateClientInterfaces = value; }
+        }
+
+        [Argument(Name = "WrapDtoExceptions", IsRequired = false, Description = "Specifies whether DTO exceptions are wrapped in a SwaggerError instance (default: false).")]
+        public bool WrapDtoExceptions
+        {
+            get { return Settings.WrapDtoExceptions; }
+            set { Settings.WrapDtoExceptions = value; }
         }
 
         [Argument(Name = "GenerateDtoTypes", IsRequired = false, Description = "Specifies whether to generate DTO classes.")]
@@ -100,11 +115,11 @@ namespace NSwag.Commands
             set { Settings.OperationGenerationMode = value; }
         }
 
-        [Argument(Name = "GenerateReadOnlyKeywords", IsRequired = false, Description = "Specifies whether to generate readonly keywords (only available in TS 2.0+, default: true).")]
-        public bool GenerateReadOnlyKeywords
+        [Argument(Name = "MarkOptionalProperties", IsRequired = false, Description = "Specifies whether to mark optional properties with ? (default: false).")]
+        public bool MarkOptionalProperties
         {
-            get { return Settings.TypeScriptGeneratorSettings.GenerateReadOnlyKeywords; }
-            set { Settings.TypeScriptGeneratorSettings.GenerateReadOnlyKeywords = value; }
+            get { return Settings.TypeScriptGeneratorSettings.MarkOptionalProperties; }
+            set { Settings.TypeScriptGeneratorSettings.MarkOptionalProperties = value; }
         }
 
         [Argument(Name = "TypeStyle", IsRequired = false, Description = "The type style (default: Class).")]
@@ -155,7 +170,7 @@ namespace NSwag.Commands
                     additionalCode = DynamicApis.FileReadAllText(additionalCode);
                 Settings.TypeScriptGeneratorSettings.ExtensionCode = additionalCode;
 
-                var clientGenerator = new SwaggerToTypeScriptClientGenerator(InputSwaggerService, Settings);
+                var clientGenerator = new SwaggerToTypeScriptClientGenerator(InputSwaggerDocument, Settings);
                 return clientGenerator.GenerateFile();
             });
         }

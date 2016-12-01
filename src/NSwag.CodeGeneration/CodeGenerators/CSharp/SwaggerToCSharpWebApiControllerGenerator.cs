@@ -17,43 +17,35 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp
     /// <summary>Generates the CSharp service client code. </summary>
     public class SwaggerToCSharpWebApiControllerGenerator : SwaggerToCSharpGeneratorBase
     {
-        private readonly SwaggerService _service;
+        private readonly SwaggerDocument _document;
 
         /// <summary>Initializes a new instance of the <see cref="SwaggerToCSharpWebApiControllerGenerator" /> class.</summary>
-        /// <param name="service">The service.</param>
+        /// <param name="document">The Swagger document.</param>
         /// <param name="settings">The settings.</param>
-        /// <exception cref="System.ArgumentNullException">service</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="service" /> is <see langword="null" />.</exception>
-        public SwaggerToCSharpWebApiControllerGenerator(SwaggerService service, SwaggerToCSharpWebApiControllerGeneratorSettings settings)
-            : this(service, settings, SwaggerToCSharpTypeResolver.CreateWithDefinitions(settings.CSharpGeneratorSettings, service.Definitions))
+        /// <exception cref="ArgumentNullException"><paramref name="document" /> is <see langword="null" />.</exception>
+        public SwaggerToCSharpWebApiControllerGenerator(SwaggerDocument document, SwaggerToCSharpWebApiControllerGeneratorSettings settings)
+            : this(document, settings, SwaggerToCSharpTypeResolver.CreateWithDefinitions(settings.CSharpGeneratorSettings, document.Definitions))
         {
 
         }
 
         /// <summary>Initializes a new instance of the <see cref="SwaggerToCSharpWebApiControllerGenerator" /> class.</summary>
-        /// <param name="service">The service.</param>
+        /// <param name="document">The Swagger document.</param>
         /// <param name="settings">The settings.</param>
         /// <param name="resolver">The resolver.</param>
-        /// <exception cref="System.ArgumentNullException">service</exception>
-        /// <exception cref="ArgumentNullException"><paramref name="service" /> is <see langword="null" />.</exception>
-        public SwaggerToCSharpWebApiControllerGenerator(SwaggerService service, SwaggerToCSharpWebApiControllerGeneratorSettings settings, SwaggerToCSharpTypeResolver resolver)
-            : base(service, settings, resolver)
+        /// <exception cref="ArgumentNullException"><paramref name="document" /> is <see langword="null" />.</exception>
+        public SwaggerToCSharpWebApiControllerGenerator(SwaggerDocument document, SwaggerToCSharpWebApiControllerGeneratorSettings settings, SwaggerToCSharpTypeResolver resolver)
+            : base(document, settings, resolver)
         {
-            if (service == null)
-                throw new ArgumentNullException(nameof(service));
+            if (document == null)
+                throw new ArgumentNullException(nameof(document));
 
             Settings = settings;
-
-            _service = service;
-            foreach (var definition in _service.Definitions.Where(p => string.IsNullOrEmpty(p.Value.TypeNameRaw)))
-                definition.Value.TypeNameRaw = definition.Key;
+            _document = document;
         }
 
         /// <summary>Gets or sets the generator settings.</summary>
         public SwaggerToCSharpWebApiControllerGeneratorSettings Settings { get; set; }
-
-        /// <summary>Gets the language.</summary>
-        protected override string Language => "CSharp";
 
         internal override ClientGeneratorBaseSettings BaseSettings => Settings;
 
@@ -61,7 +53,7 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp
         /// <returns>The file contents.</returns>
         public override string GenerateFile()
         {
-            return GenerateFile(_service, ClientGeneratorOutputType.Full);
+            return GenerateFile(_document, ClientGeneratorOutputType.Full);
         }
 
         internal override string GenerateClientClass(string controllerName, string controllerClassName, IList<OperationModel> operations, ClientGeneratorOutputType outputType)
@@ -69,7 +61,7 @@ namespace NSwag.CodeGeneration.CodeGenerators.CSharp
             var model = new ControllerTemplateModel(Settings)
             {
                 Class = controllerClassName,
-                BaseUrl = _service.BaseUrl,
+                BaseUrl = _document.BaseUrl,
                 Operations = operations
             };
 

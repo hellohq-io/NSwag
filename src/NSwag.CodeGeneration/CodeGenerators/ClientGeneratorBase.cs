@@ -6,6 +6,7 @@
 // <author>Rico Suter, mail@rsuter.com</author>
 //-----------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NJsonSchema;
@@ -16,7 +17,7 @@ using NSwag.CodeGeneration.CodeGenerators.Models;
 namespace NSwag.CodeGeneration.CodeGenerators
 {
     /// <summary>The client generator base.</summary>
-    public abstract class ClientGeneratorBase : GeneratorBase
+    public abstract class ClientGeneratorBase
     {
         /// <summary>Initializes a new instance of the <see cref="ClientGeneratorBase" /> class.</summary>
         /// <param name="resolver">The type resolver.</param>
@@ -27,8 +28,12 @@ namespace NSwag.CodeGeneration.CodeGenerators
             codeGeneratorSettings.NullHandling = NullHandling.Swagger; // Enforce Swagger null handling 
         }
 
+        /// <summary>Generates the the whole file containing all needed types.</summary>
+        /// <returns>The code</returns>
+        public abstract string GenerateFile();
+
         /// <summary>Gets the type resolver.</summary>
-        protected ITypeResolver Resolver { get; private set; }
+        protected ITypeResolver Resolver { get; }
 
         internal abstract ClientGeneratorBaseSettings BaseSettings { get; }
 
@@ -41,6 +46,14 @@ namespace NSwag.CodeGeneration.CodeGenerators
         internal abstract string GetExceptionType(SwaggerOperation operation);
 
         internal abstract string GetResultType(SwaggerOperation operation);
+
+        internal virtual string GetParameterVariableName(SwaggerParameter parameter)
+        {
+            return ConversionUtilities.ConvertToLowerCamelCase(parameter.Name
+                .Replace("-", "_")
+                .Replace(".", "_")
+                .Replace("$", string.Empty), true);
+        }
 
         internal bool HasResultType(SwaggerOperation operation)
         {
@@ -56,15 +69,15 @@ namespace NSwag.CodeGeneration.CodeGenerators
             return null;
         }
 
-        internal string GenerateFile(SwaggerService service, ClientGeneratorOutputType type)
+        internal string GenerateFile(SwaggerDocument document, ClientGeneratorOutputType type)
         {
             var clientCode = string.Empty;
-            var operations = GetOperations(service);
+            var operations = GetOperations(document);
             var clientClasses = new List<string>();
 
             if (BaseSettings.OperationNameGenerator.SupportsMultipleClients)
             {
-                foreach (var controllerOperations in operations.GroupBy(o => BaseSettings.OperationNameGenerator.GetClientName(service, o.Path, o.HttpMethod, o.Operation)))
+                foreach (var controllerOperations in operations.GroupBy(o => BaseSettings.OperationNameGenerator.GetClientName(document, o.Path, o.HttpMethod, o.Operation)))
                 {
                     var controllerName = controllerOperations.Key;
                     var controllerClassName = GetClassName(controllerOperations.Key);
@@ -86,16 +99,16 @@ namespace NSwag.CodeGeneration.CodeGenerators
                 .Replace("\n\n\n", "\n\n");
         }
 
-        internal List<OperationModel> GetOperations(SwaggerService service)
+        internal List<OperationModel> GetOperations(SwaggerDocument document)
         {
-            service.GenerateOperationIds();
+            document.GenerateOperationIds();
 
-            var operations = service.Paths
+            var operations = document.Paths
                 .SelectMany(pair => pair.Value.Select(p => new { Path = pair.Key.Trim('/'), HttpMethod = p.Key, Operation = p.Value }))
                 .Select(tuple =>
                 {
                     var operation = tuple.Operation;
-                    var exceptionSchema = (Resolver as SwaggerToCSharpTypeResolver)?.ExceptionSchema; 
+                    var exceptionSchema = (Resolver as SwaggerToCSharpTypeResolver)?.ExceptionSchema;
                     var responses = operation.Responses.Select(response => new ResponseModel(response, exceptionSchema, this)).ToList();
 
                     var defaultResponse = responses.SingleOrDefault(r => r.StatusCode == "default");
@@ -107,7 +120,7 @@ namespace NSwag.CodeGeneration.CodeGenerators
                         Path = tuple.Path,
                         HttpMethod = tuple.HttpMethod,
                         Operation = tuple.Operation,
-                        OperationName = BaseSettings.OperationNameGenerator.GetOperationName(service, tuple.Path, tuple.HttpMethod, tuple.Operation),
+                        OperationName = BaseSettings.OperationNameGenerator.GetOperationName(document, tuple.Path, tuple.HttpMethod, tuple.Operation),
 
                         ResultType = GetResultType(operation),
                         HasResultType = HasResultType(operation),
@@ -118,7 +131,7 @@ namespace NSwag.CodeGeneration.CodeGenerators
                         Responses = responses,
                         DefaultResponse = defaultResponse,
                         Parameters = operation.ActualParameters.Select(p => new ParameterModel(
-                            ResolveParameterType(p), operation, p, BaseSettings.CodeGeneratorSettings, this)).ToList(),
+                            ResolveParameterType(p), operation, p, p.Name, GetParameterVariableName(p), BaseSettings.CodeGeneratorSettings, this)).ToList(),
                     };
                 }).ToList();
             return operations;

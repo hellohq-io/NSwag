@@ -23,12 +23,6 @@ namespace NSwagStudio.ViewModels.CodeGenerators
         private string _clientCode;
         private SwaggerToTypeScriptClientCommand _command = new SwaggerToTypeScriptClientCommand();
 
-        //public bool ShowSettings
-        //{
-        //    get { return ApplicationSettings.GetSetting("SwaggerToTypeScriptClientGeneratorModel.ShowSettings", true); }
-        //    set { ApplicationSettings.SetSetting("SwaggerToTypeScriptClientGeneratorModel.ShowSettings", value); }
-        //}
-
         /// <summary>Gets the settings.</summary>
         public SwaggerToTypeScriptClientCommand Command
         {
@@ -39,6 +33,9 @@ namespace NSwagStudio.ViewModels.CodeGenerators
                     RaiseAllPropertiesChanged();
             }
         }
+
+        /// <summary>Gets the supported TypeScript versions.</summary>
+        public decimal[] TypeScriptVersions => new[] {1.8m, 2.0m};
 
         /// <summary>Gets the output templates. </summary>
         public TypeScriptTemplate[] Templates
@@ -116,7 +113,7 @@ namespace NSwagStudio.ViewModels.CodeGenerators
                 {
                     if (!string.IsNullOrEmpty(swaggerData))
                     {
-                        Command.Input = SwaggerService.FromJson(swaggerData, documentPath);
+                        Command.Input = SwaggerDocument.FromJson(swaggerData, documentPath);
                         code = await Command.RunAsync();
                         Command.Input = null;
                     }

@@ -19,22 +19,18 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
     /// <summary>Provides services to for Swagger generators like the creation of parameters and handling of schemas.</summary>
     public class SwaggerGenerator
     {
+        private readonly JsonSchemaResolver _schemaResolver;
         private readonly JsonSchemaGenerator _schemaGenerator;
-        private readonly ISchemaResolver _schemaResolver;
-        private readonly ISchemaDefinitionAppender _schemaDefinitionAppender;
         private readonly JsonSchemaGeneratorSettings _settings;
 
         /// <summary>Initializes a new instance of the <see cref="SwaggerGenerator"/> class.</summary>
         /// <param name="schemaGenerator">The schema generator.</param>
         /// <param name="schemaGeneratorSettings">The schema generator settings.</param>
         /// <param name="schemaResolver">The schema resolver.</param>
-        /// <param name="schemaDefinitionAppender">The schema definition appender.</param>
-        public SwaggerGenerator(JsonSchemaGenerator schemaGenerator, JsonSchemaGeneratorSettings schemaGeneratorSettings, 
-            ISchemaResolver schemaResolver, ISchemaDefinitionAppender schemaDefinitionAppender)
+        public SwaggerGenerator(JsonSchemaGenerator schemaGenerator, JsonSchemaGeneratorSettings schemaGeneratorSettings, JsonSchemaResolver schemaResolver)
         {
-            _schemaGenerator = schemaGenerator;
             _schemaResolver = schemaResolver;
-            _schemaDefinitionAppender = schemaDefinitionAppender;
+            _schemaGenerator = schemaGenerator;
             _settings = schemaGeneratorSettings;
         }
 
@@ -94,7 +90,7 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
                     Type = typeDescription.Type, // Used as fallback for generators which do not check the "schema" property
                     Schema = new JsonSchema4
                     {
-                        SchemaReference = _schemaGenerator.Generate<JsonSchema4>(parameterType, parentAttributes, _schemaResolver, _schemaDefinitionAppender)
+                        SchemaReference = _schemaGenerator.Generate<JsonSchema4>(parameterType, parentAttributes, _schemaResolver)
                     }
                 };
             }
@@ -102,7 +98,7 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
             {
                 parameterType = typeDescription.Type.HasFlag(JsonObjectType.Object) ? typeof(string) : parameterType; // object types must be treated as string
 
-                operationParameter = _schemaGenerator.Generate<SwaggerParameter>(parameterType, parentAttributes, _schemaResolver, _schemaDefinitionAppender);
+                operationParameter = _schemaGenerator.Generate<SwaggerParameter>(parameterType, parentAttributes, _schemaResolver);
                 _schemaGenerator.ApplyPropertyAnnotations(operationParameter, parameterType, parentAttributes, typeDescription);
             }
 
@@ -171,7 +167,7 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
                 }
 
                 if (!_schemaResolver.HasSchema(type, false))
-                    _schemaGenerator.Generate(type, _schemaResolver, _schemaDefinitionAppender);
+                    _schemaGenerator.Generate(type, _schemaResolver);
 
                 if (mayBeNull)
                 {
@@ -195,7 +191,7 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
 
             if (typeDescription.Type.HasFlag(JsonObjectType.Array))
             {
-                var itemType = type.GenericTypeArguments.Length == 0 ? type.GetElementType() : type.GenericTypeArguments[0];
+                var itemType = type.GetEnumerableItemType();
                 return new JsonSchema4
                 {
                     // TODO: Fix this bad design
@@ -205,7 +201,7 @@ namespace NSwag.CodeGeneration.SwaggerGenerators
                 };
             }
 
-            return _schemaGenerator.Generate(type, _schemaResolver, _schemaDefinitionAppender);
+            return _schemaGenerator.Generate(type, _schemaResolver);
         }
 
         private bool IsParameterRequired(ParameterInfo parameter)

@@ -9,6 +9,7 @@
 using System;
 using System.Threading.Tasks;
 using NConsole;
+using Newtonsoft.Json;
 using NJsonSchema.Infrastructure;
 
 #pragma warning disable 1591
@@ -18,6 +19,7 @@ namespace NSwag.Commands.Base
     public abstract class OutputCommandBase : IConsoleCommand
     {
         [Argument(Name = "Output", IsRequired = false, Description = "The output file path (optional).")]
+        [JsonProperty("output", NullValueHandling = NullValueHandling.Include)]
         public string OutputFilePath { get; set; }
 
         public abstract Task<object> RunAsync(CommandLineProcessor processor, IConsoleHost host);
@@ -31,13 +33,10 @@ namespace NSwag.Commands.Base
         {
             if (!string.IsNullOrEmpty(path))
             {
-                // TODO: Implement this
-                //var file = new FileInfo(path);
-                //var directory = file.Directory;
-
-                //if (!directory.Exists)
-                //    directory.Create();
-
+                var directory = DynamicApis.PathGetDirectoryName(path);
+                if (!string.IsNullOrEmpty(directory) && !DynamicApis.DirectoryExists(directory))
+                    DynamicApis.DirectoryCreateDirectory(directory);
+                
                 DynamicApis.FileWriteAllText(path, generator());
                 host?.WriteMessage("Code has been successfully written to file.\n");
 
