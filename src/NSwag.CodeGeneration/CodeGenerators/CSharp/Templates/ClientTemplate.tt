@@ -23,7 +23,7 @@ public partial interface I<#=Model.Class#>
 <#  if(operation.HasResultDescription){#>    /// <returns><#=ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)#></returns>
 <#  }#>    /// <exception cref="<#=Model.ExceptionClass#>">A server side error occurred.</exception>
 <#  if(operation.IsDeprecated){#>    [Obsolete]
-<#  }#>    <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(<#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableName#>, <#}#>CancellationToken cancellationToken);
+<#  }#>    <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(CancellationToken cancellationToken, <#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableName#><#if(!parameter.IsLast){#>, <#}}#>);
 
 <#}#>
 }
@@ -41,13 +41,12 @@ public partial class <#=Model.Class#> <#if(Model.HasBaseType){#>: <#}#><#if(Mode
     {
     }
 
-<#}else if(string.IsNullOrEmpty(Model.BaseUrl)){#>
+<#}#>
     public <#=Model.Class#>(string baseUrl)
     {
         BaseUrl = baseUrl; 
     }
 
-<#}#>
     public string BaseUrl 
     {
         get { return _baseUrl; }
@@ -67,7 +66,7 @@ public partial class <#=Model.Class#> <#if(Model.HasBaseType){#>: <#}#><#if(Mode
 <#  if(operation.IsDeprecated){#>    [Obsolete]
 <#  }#>    public <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(<#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableName#><#  if(!parameter.IsRequired){#> = null<#  }#><#if(!parameter.IsLast){#>, <#}}#>)
     {
-        return <#=operation.OperationNameUpper#>Async(<#foreach(var parameter in operation.Parameters){#><#=parameter.VariableName#>, <#}#>CancellationToken.None);
+        return <#=operation.OperationNameUpper#>Async(CancellationToken.None, <#foreach(var parameter in operation.Parameters){#><#=parameter.VariableName#><#if(!parameter.IsLast){#>, <#}}#>);
     }
 
 <#  if(operation.HasSummary){#>    /// <summary><#=ConversionUtilities.ConvertCSharpDocBreaks(operation.Summary, 1)#></summary>
@@ -77,7 +76,7 @@ public partial class <#=Model.Class#> <#if(Model.HasBaseType){#>: <#}#><#if(Mode
 <#  if(operation.HasResultDescription){#>    /// <returns><#=ConversionUtilities.ConvertCSharpDocBreaks(operation.ResultDescription, 1)#></returns>
 <#  }#>    /// <exception cref="<#=Model.ExceptionClass#>">A server side error occurred.</exception>
 <#  if(operation.IsDeprecated){#>    [Obsolete]
-<#  }#>    public async <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(<#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableName#><#  if(!parameter.IsRequired){#> = null<#  }#>, <#}#>CancellationToken cancellationToken)
+<#  }#>    public async <#=operation.ResultType#> <#=operation.OperationNameUpper#>Async(CancellationToken cancellationToken, <#foreach(var parameter in operation.Parameters){#><#=parameter.Type#> <#=parameter.VariableName#><#  if(!parameter.IsRequired){#> = null<#  }#><#if(!parameter.IsLast){#>, <#}}#>)
     {
         var url_ = string.Format("{0}/{1}<#if(operation.QueryParameters.Any()){#>?<#}#>", BaseUrl, "<#=operation.Path#>");
 <#foreach(var parameter in operation.PathParameters){#>
